@@ -1,5 +1,6 @@
 from module.interface import work_iface
 from datetime import datetime
+from module.scan.mac_vendor import mac_vendor
 from scapy.all import ARP, Ether, srp, IP, ICMP, sr1
 
 
@@ -13,6 +14,7 @@ def run_scan(target):
         i += 1
         ip = res.psrc
         mac = res.hwsrc
-        print(f"[{i}] IP: {ip} MAC: {mac}")
+        m_vendor = mac_vendor(mac)
+        print(f"[{i}] IP: {ip} MAC: {mac} MV: {m_vendor}")
 
 
