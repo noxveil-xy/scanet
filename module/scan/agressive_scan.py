@@ -2,6 +2,7 @@ from module.interface import work_iface
 from datetime import datetime
 from module.mac_vendor import mac_vendor
 from module.ip_ttl import icmp_res
+from module.dns_resolve import dns_res
 from scapy.all import ARP, Ether, srp, IP, ICMP, sr1
 
 
@@ -17,6 +18,7 @@ def run_scan(target):
         mac = res.hwsrc
         m_vendor = mac_vendor(mac)
         ttl = icmp_res(ip)
-        print(f"[{i}] IP: {ip} MAC: {mac} TTL: {ttl} MV: {m_vendor}")
+        dns_r = dns_res(ip)
+        print(f"[{i}] [IP: {ip}] [MAC: {mac}] [TTL: {ttl}] [MV: {m_vendor}] [DNS: {dns_r}]")
 
 
